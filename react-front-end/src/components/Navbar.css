@@ -22,7 +22,7 @@
 .navbar__list {
 	display: flex;
 	flex-direction: column;
-	justify-content: end;
+	justify-content: flex-end;
 	align-items: flex-end;
 	top: -100%;
 	right: -44%;
