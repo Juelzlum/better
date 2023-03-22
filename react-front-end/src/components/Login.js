@@ -1,56 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FiFacebook, FiGithub, FiChrome } from 'react-icons/fi';
 import './Login.css';
-import Navbar from './Navbar';
+
 function Login() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [showLogin, setShowLogin] = useState(false);
+	const [showSignup, setShowSignup] = useState(false);
 
 	const handleLogin = (event) => {
 		event.preventDefault();
 		setEmail(event.target.value);
 		setPassword(event.target.value);
 	};
-
-	useEffect(() => {
-		const container = document.getElementById('container');
-		const overlayBtn = document.getElementById('overlayBtn');
-
-		const toggleRightPanel = () => {
-			container.classList.toggle('right-panel-active');
-		};
-
-		overlayBtn.addEventListener('click', toggleRightPanel);
-
-		overlayBtn.classList.remove('btnScaled');
-		window.requestAnimationFrame(() => {
-			overlayBtn.classList.add('btnScaled');
-		});
-
-		// Cleanup function to remove event listener
-		return () => {
-			overlayBtn.removeEventListener('click', toggleRightPanel);
-		};
-	}, []); // empty dependency array ensures the effect is only run once on mount
-
+	console.log(showSignup);
 	return (
 		<fragment>
-			<body class='login'>
-				<div class='container' id='container'>
+			<div class='login'>
+				<div
+					class={`container ${showSignup ? 'right-panel-active' : ''}`}
+					id='container'>
 					<div class='form-container sign-up-container'>
 						<form action='#'>
 							<h1>Create Account</h1>
 							<div class='social-container'>
-								<a>
+								<div>
 									<FiFacebook size={25} />
-								</a>
-								<a>
+								</div>
+								<div>
 									<FiGithub size={25} />
-								</a>
-								<a>
+								</div>
+								<div>
 									<FiChrome size={25} />
-								</a>
+								</div>
 							</div>
 							<span>or use your email for registration</span>
 							<div class='infield'>
@@ -72,15 +53,15 @@ function Login() {
 						<form onSubmit={handleLogin}>
 							<h1>Sign in</h1>
 							<div class='social-container'>
-								<a>
+								<div>
 									<FiFacebook size={25} />
-								</a>
-								<a>
+								</div>
+								<div>
 									<FiGithub size={25} />
-								</a>
-								<a>
+								</div>
+								<div>
 									<FiChrome size={25} />
-								</a>
+								</div>
 							</div>
 							<span>or use your account</span>
 							<div class='infield'>
@@ -123,10 +104,12 @@ function Login() {
 								<button>Sign Up</button>
 							</div>
 						</div>
-						<button id='overlayBtn'></button>
+						<button
+							onClick={() => setShowSignup((prev) => !prev)}
+							id='overlayBtn'></button>
 					</div>
 				</div>
-			</body>
+			</div>
 		</fragment>
 	);
 }

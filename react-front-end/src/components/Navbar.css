@@ -32,12 +32,14 @@
 	transition: all 0.5s ease;
 	opacity: 0;
 	pointer-events: none;
+	z-index: 1;
 }
 .navbar__list--active {
 	display: flex;
 	opacity: 100;
 	top: 70px;
 	pointer-events: all;
+	z-index: 1;
 }
 .navbar__item {
 	width: 100%;
