@@ -84,8 +84,10 @@ function Login() {
 								<button>Sign In</button>
 							</div>
 							<div class='overlay-panel overlay-right'>
-								<h1>Hello, Friend!</h1>
-								<p>Enter your personal details and start journey with us</p>
+								<h1>Welcome!</h1>
+								<p>
+									Enter your personal details and start your journey with us
+								</p>
 								<button>Sign Up</button>
 							</div>
 						</div>
@@ -93,17 +95,6 @@ function Login() {
 					</div>
 				</div>
 			</body>
-			{/* <Helmet>
-			<script>
-          const container = document.getElementById('container');
-        const overlayCon= document.getElementById('overlayCon');
-        const overlayBtn =document.getElementById('overlayBtn');
-
-        overlayBtn.addEventListener.getElementById('click', () => {
-          container.classlist.toggle('right-panel-active');
-        })
-        </script>
-      </Helmet> */}
 		</fragment>
 	);
 }

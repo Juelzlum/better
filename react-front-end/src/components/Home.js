@@ -10,7 +10,6 @@ const navbarLinks = [
 	{ url: '#', title: 'Home' },
 	{ url: '#', title: 'About' },
 	{ url: '/login', title: 'Login' },
-	{ url: '#', title: 'Sign Up' },
 	{ url: '#', title: 'Contact Us' },
 ];
 
