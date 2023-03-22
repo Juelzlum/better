@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Home from './components/Home';
-import ReactCalendar from './components/calendar/Calendar';
+import Main from './components/Main';
 
 class App extends Component {
 	constructor(props) {
@@ -35,7 +35,7 @@ class App extends Component {
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/login' element={<Login />} />
-						<Route path='/main' element={<ReactCalendar />} />
+						<Route path='/main' element={<Main />} />
 					</Routes>
 				</Router>
 			</div>
