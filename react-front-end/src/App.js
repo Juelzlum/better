@@ -35,7 +35,7 @@ class App extends Component {
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/login' element={<Login />} />
-						<Route path='/calendar' element={<ReactCalendar />} />
+						<Route path='/main' element={<ReactCalendar />} />
 					</Routes>
 				</Router>
 			</div>
