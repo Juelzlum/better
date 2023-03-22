@@ -1,15 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiFacebook, FiGithub, FiChrome } from 'react-icons/fi';
 import './Login.css';
 import Navbar from './Navbar';
 function Login() {
-	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [showLogin, setShowLogin] = useState(false);
 
 	const handleLogin = (event) => {
 		event.preventDefault();
+		setEmail(event.target.value);
+		setPassword(event.target.value);
 	};
+
+	useEffect(() => {
+		const container = document.getElementById('container');
+		const overlayBtn = document.getElementById('overlayBtn');
+
+		const toggleRightPanel = () => {
+			container.classList.toggle('right-panel-active');
+		};
+
+		overlayBtn.addEventListener('click', toggleRightPanel);
+
+		overlayBtn.classList.remove('btnScaled');
+		window.requestAnimationFrame(() => {
+			overlayBtn.classList.add('btnScaled');
+		});
+
+		// Cleanup function to remove event listener
+		return () => {
+			overlayBtn.removeEventListener('click', toggleRightPanel);
+		};
+	}, []); // empty dependency array ensures the effect is only run once on mount
 
 	return (
 		<fragment>
@@ -19,14 +42,14 @@ function Login() {
 						<form action='#'>
 							<h1>Create Account</h1>
 							<div class='social-container'>
-								<a href='#' class='social'>
-									<i class='fab fa-facebook-f'></i>
+								<a>
+									<FiFacebook size={25} />
 								</a>
-								<a href='#' class='social'>
-									<i class='fab fa-google-plus-g'></i>
+								<a>
+									<FiGithub size={25} />
 								</a>
-								<a href='#' class='social'>
-									<i class='fab fa-linkedin-in'></i>
+								<a>
+									<FiChrome size={25} />
 								</a>
 							</div>
 							<span>or use your email for registration</span>
@@ -46,7 +69,7 @@ function Login() {
 						</form>
 					</div>
 					<div class='form-container sign-in-container'>
-						<form action='#'>
+						<form onSubmit={handleLogin}>
 							<h1>Sign in</h1>
 							<div class='social-container'>
 								<a>
@@ -61,14 +84,23 @@ function Login() {
 							</div>
 							<span>or use your account</span>
 							<div class='infield'>
-								<input type='email' placeholder='Email' name='email' />
+								<input
+									type='email'
+									value={email}
+									placeholder='username'
+									name='email'
+								/>
 								<label></label>
 							</div>
 							<div class='infield'>
-								<input type='password' placeholder='Password' />
+								<input
+									type='password'
+									value={password}
+									placeholder='Password'
+								/>
 								<label></label>
 							</div>
-							<a href='#' class='forgot'>
+							<a href='/login' class='forgot'>
 								Forgot your password?
 							</a>
 							<button>Sign In</button>

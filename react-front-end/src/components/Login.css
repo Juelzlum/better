@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 * {
 	padding: 0px;
 	margin: 0px;
@@ -70,6 +68,7 @@ h1 {
 	height: 50px;
 	width: 50px;
 	align-items: center;
+	cursor: pointer;
 }
 span {
 	font-size: 12px;
