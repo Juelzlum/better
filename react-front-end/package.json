@@ -7,7 +7,11 @@
 		"react": "^16.8.6",
 		"react-calendar": "^4.0.0",
 		"react-dom": "^16.8.6",
+<<<<<<< HEAD
 		"react-icons": "^4.8.0",
+=======
+		"react-helmet": "^6.1.0",
+>>>>>>> master
 		"react-router-dom": "^6.9.0",
 		"react-scripts": "2.1.8"
 	},

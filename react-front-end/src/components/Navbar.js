@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import './Navbar.css';
 import { FiMenu, FiX } from 'react-icons/fi';
 
-const Navbar = ({ navbarLinks }) => {
+const navbarLinks = [
+	{ url: '#', title: 'Home' },
+	{ url: '#', title: 'About' },
+	{ url: '/login', title: 'Login' },
+	{ url: '#', title: 'Contact Us' },
+];
+
+const Navbar = () => {
 	const [menuClicked, setMenuClicked] = useState(false);
 
 	const toggleMenuClick = () => {
