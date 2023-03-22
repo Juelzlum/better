@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FiFacebook, FiGithub, FiChrome } from 'react-icons/fi';
 import './Login.css';
+import Navbar from './Navbar';
 function Login() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
@@ -12,7 +13,7 @@ function Login() {
 
 	return (
 		<fragment>
-			<body>
+			<body class='login'>
 				<div class='container' id='container'>
 					<div class='form-container sign-up-container'>
 						<form action='#'>
