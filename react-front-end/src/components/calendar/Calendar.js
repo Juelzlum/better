@@ -11,6 +11,7 @@ const ReactCalendar = () => {
 			to: '/',
 			options: { state: { selectedDate: selectedDate } },
 		});
+		console.log(selectedDate);
 	};
 
 	return (

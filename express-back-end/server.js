@@ -10,15 +10,13 @@ App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
 
-//routes for each resource
-const loginRoutes = require('./routes/login');
+const login = require('./routes/login');
 
-//mount all resource routes
-app.use('/login', login);
+App.use('/login', login);
 
-// Sample GET route
+
 App.get('/api/data', (req, res) => {
-	connection.query('SELECT * FROM users').then((data) => {
+	connection.query('SELECT * FROM stats').then((data) => {
 		res.json(data.rows);
 	});
 });
