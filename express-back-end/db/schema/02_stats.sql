@@ -1,10 +1,10 @@
 DROP TABLE IF EXISTS stats CASCADE;
 
 CREATE TABLE stats(
-  days_id INTEGER REFERENCES days(id) on DELETE CASCADE
-  enough_water BOOLEAN
-  enough_water BOOLEAN
-  stress BOOLEAN
+  days_id  SERIAL PRIMARY KEY NOT NULL,
+  enough_water BOOLEAN,
+  enough_sleep BOOLEAN,
+  stress BOOLEAN,
   tired BOOLEAN
 );
 
