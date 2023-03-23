@@ -3,9 +3,11 @@ import './Navbar.css';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 const navbarLinks = [
-	{ url: '#', title: 'Home' },
+	{ url: '/', title: 'Home' },
 	{ url: '#', title: 'About' },
+	{ url: '/main', title: 'Dashboard' },
 	{ url: '/login', title: 'Login' },
+
 	{ url: '#', title: 'Contact Us' },
 ];
 

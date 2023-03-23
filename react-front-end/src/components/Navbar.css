@@ -1,6 +1,6 @@
 .navbar {
 	display: flex;
-	background-color: rgba(0, 0, 0, 0.75);
+	background-color: #141e30;
 	height: 70px;
 	justify-content: space-between;
 	align-items: center;
@@ -37,7 +37,7 @@
 .navbar__list--active {
 	display: flex;
 	opacity: 100;
-	top: 70px;
+	top: 53px;
 	pointer-events: all;
 	z-index: 1;
 }
@@ -55,8 +55,8 @@
 	width: 12%;
 	justify-content: center;
 	align-items: center;
-	background-color: black;
-	opacity: 0.75;
+	background-color: #141e30;
+	opacity: 0.9;
 	color: rgb(255, 255, 255);
 	text-decoration: none;
 	font-size: 0.85rem;

@@ -2,17 +2,27 @@ import React, { useState } from 'react';
 import { FiFacebook, FiGithub, FiChrome } from 'react-icons/fi';
 import './Login.css';
 
+/**
+ * Renders the login form. You can use this form to create a social account or to log in to a third party.
+ *
+ *
+ * @return { JSX. Element } The login form as a JSX Element. If the user is already logged in this will return undefined
+ */
+
 function Login() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [showSignup, setShowSignup] = useState(false);
+
+	// Handle a login event. We don't care about password or e - mail
 
 	const handleLogin = (event) => {
 		event.preventDefault();
 		setEmail(event.target.value);
 		setPassword(event.target.value);
 	};
-	console.log(showSignup);
+	//Toggles state of login form. This is called when you click on
+	//the signup or sign in button
 	return (
 		<fragment>
 			<div class='login'>
@@ -20,7 +30,7 @@ function Login() {
 					class={`container ${showSignup ? 'right-panel-active' : ''}`}
 					id='container'>
 					<div class='form-container sign-up-container'>
-						<form action='#'>
+						<form class='create' action='#'>
 							<h1>Create Account</h1>
 							<div class='social-container'>
 								<div>
@@ -65,20 +75,11 @@ function Login() {
 							</div>
 							<span>or use your account</span>
 							<div class='infield'>
-								<input
-									type='email'
-									value={email}
-									placeholder='username'
-									name='email'
-								/>
+								<input type='email' placeholder='username' name='email' />
 								<label></label>
 							</div>
 							<div class='infield'>
-								<input
-									type='password'
-									value={password}
-									placeholder='Password'
-								/>
+								<input type='password' placeholder='Password' />
 								<label></label>
 							</div>
 							<a href='/login' class='forgot'>
