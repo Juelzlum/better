@@ -95,7 +95,7 @@ class Heatchart extends Component {
 						radius: 3,
 					},
 				},
-				colors: ['#008FFB'],
+				colors: ['#0C4160'],
 				title: {},
 			},
 		};

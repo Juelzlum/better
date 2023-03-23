@@ -9,6 +9,7 @@ class RadialBar2 extends Component {
 		this.state = {
 			series: [75],
 			options: {
+				colors: ['#6F8FAF', '#141e30'],
 				chart: {
 					height: 350,
 					type: 'radialBar',

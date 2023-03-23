@@ -2,20 +2,22 @@
 	display: relative;
 	justify-content: center;
 	font-family: 'Lato', sans-serif;
-	margin-top: 100px;
+	margin-top: 150px;
+	color: #071330;
+
 	margin-left: 150px;
 }
 .radialBar {
 	position: relative;
 	display: inline-block;
 	justify-content: center;
-	margin-top: 20px;
-	margin-left: 150px;
-	margin-right: 150px;
+	margin-top: 50px;
+	margin-left: 225px;
+	margin-right: 80px;
 }
 .heatchart {
 	position: relative;
-	margin-top: -60px;
-	margin-left: 100px;
+	margin-top: -80px;
+	margin-left: 115px;
 	margin-right: 100px;
 }

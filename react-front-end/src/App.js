@@ -39,7 +39,6 @@ class App extends Component {
 						<Route path='/' element={<Home />} />
 						<Route path='/login' element={<Login />} />
 						<Route path='/main' element={<Main />} />
-						{/* <Route path='/day/${id}' element={<Day />} /> */}
 						<Route path='/HabitTracker' element={<HabitTracker />}></Route>
 					</Routes>
 				</Router>

@@ -7,7 +7,7 @@ const ReactCalendar = () => {
 	const navigate = useNavigate();
 
 	const handleNavigate = (selectedDate) => {
-		navigate('/');
+		navigate('/habittracker');
 	};
 
 	return (
