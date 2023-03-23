@@ -5,6 +5,7 @@ import Heatcharts from './Heatcharts';
 const Main = () => {
 	return (
 		<div className='main'>
+			<h1 className='title'>Dashboard</h1>
 			<ReactCalendar />
 
 			<Heatcharts />
