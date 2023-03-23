@@ -10,7 +10,7 @@ const Report = () => {
         <span className='title'>Water</span>
         <div className='skill-bar'>
           <span className='skill-per water'>
-            <span className='tooltip'>80%</span>
+            <span className='tooltip'>5</span>
           </span>
         </div>
       </div>
@@ -18,7 +18,7 @@ const Report = () => {
         <span className='title'>Stress</span>
         <div className='skill-bar'>
           <span className='skill-per stress'>
-            <span className='tooltip'>80%</span>
+            <span className='tooltip'>6</span>
           </span>
         </div>
       </div>
