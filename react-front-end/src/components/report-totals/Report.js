@@ -26,7 +26,7 @@ const Report = () => {
         <span className='title'>Tired</span>
         <div className='skill-bar'>
           <span className='skill-per tired'>
-            <span className='tooltip'>80%</span>
+            <span className='tooltip'>3</span>
           </span>
         </div>
       </div>
@@ -34,7 +34,7 @@ const Report = () => {
         <span className='title'>Sleep</span>
         <div className='skill-bar'>
           <span className='skill-per sleep'>
-            <span className='tooltip'>80%</span>
+            <span className='tooltip'>2</span>
           </span>
         </div>
       </div>
