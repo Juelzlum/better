@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Main from './components/Main';
 import Navbar from './components/Navbar';
+import HabitTracker from './components/HabitTracker';
 
 class App extends Component {
 	constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
 						<Route path='/' element={<Home />} />
 						<Route path='/login' element={<Login />} />
 						<Route path='/main' element={<Main />} />
+            <Route path='/HabitTracker' element={<HabitTracker/>}></Route>
 					</Routes>
 				</Router>
 			</div>
