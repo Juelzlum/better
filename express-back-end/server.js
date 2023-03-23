@@ -11,8 +11,11 @@ App.use(BodyParser.json());
 App.use(Express.static('public'));
 
 const login = require('./routes/login');
+const habitTracker = require('./routes/habitTracker')
+
 
 App.use('/login', login);
+App.use('/habitTracker',habitTracker )
 
 
 App.get('/api/data', (req, res) => {
