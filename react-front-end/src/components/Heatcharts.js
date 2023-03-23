@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Chart from 'react-apexcharts';
-import './';
+import './Heatcharts.css';
 
 class Heatchart extends Component {
 	constructor(props) {
@@ -78,6 +78,7 @@ class Heatchart extends Component {
 			],
 			options: {
 				chart: {
+					toolbar: { show: false },
 					height: 200,
 					type: 'heatmap',
 				},
@@ -89,6 +90,11 @@ class Heatchart extends Component {
 				dataLabels: {
 					enabled: false,
 				},
+				plotOptions: {
+					heatmap: {
+						radius: 3,
+					},
+				},
 				colors: ['#008FFB'],
 				title: {},
 			},
@@ -96,12 +102,12 @@ class Heatchart extends Component {
 	}
 	render() {
 		return (
-			<div className='mixed-chart'>
+			<div className='heatchart'>
 				<Chart
 					options={this.state.options}
 					series={this.state.series}
 					type='heatmap'
-					height={150}
+					height={115}
 				/>
 			</div>
 		);
