@@ -3,7 +3,7 @@ import './Report.css';
 
 const Report = () => {
   return (
-    <div className='container'>
+    <div className='box'>
       <h1 className="title-text"> Progress Bar</h1>
 
       <div className='skill-box'>
