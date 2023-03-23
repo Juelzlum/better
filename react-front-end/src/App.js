@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Main from './components/Main';
 import Navbar from './components/Navbar';
+import HeatChart from './components/Navbar';
 
 class App extends Component {
 	constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
 						<Route path='/' element={<Home />} />
 						<Route path='/login' element={<Login />} />
 						<Route path='/main' element={<Main />} />
+						<Route path='/dev' element={<HeatChart />} />
 						{/* <Route path='/day/${id}' element={<Day />} /> */}
 					</Routes>
 				</Router>

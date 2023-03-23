@@ -7,10 +7,7 @@ const ReactCalendar = () => {
 	const navigate = useNavigate();
 
 	const handleNavigate = (selectedDate) => {
-		navigate({
-			to: '/',
-			options: { state: { selectedDate: selectedDate } },
-		});
+		navigate('/');
 	};
 
 	return (
