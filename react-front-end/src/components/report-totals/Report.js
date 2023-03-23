@@ -1,0 +1,45 @@
+import React from 'react';
+import './Report.css';
+
+const Report = () => {
+  return (
+    <div className='container'>
+      <h1 className="title-text"> Progress Bar</h1>
+
+      <div className='skill-box'>
+        <span className='title'>Water</span>
+        <div className='skill-bar'>
+          <span className='skill-per water'>
+            <span className='tooltip'>80%</span>
+          </span>
+        </div>
+      </div>
+      <div className='skill-box'>
+        <span className='title'>Stress</span>
+        <div className='skill-bar'>
+          <span className='skill-per stress'>
+            <span className='tooltip'>80%</span>
+          </span>
+        </div>
+      </div>
+      <div className='skill-box'>
+        <span className='title'>Tired</span>
+        <div className='skill-bar'>
+          <span className='skill-per tired'>
+            <span className='tooltip'>80%</span>
+          </span>
+        </div>
+      </div>
+      <div className='skill-box'>
+        <span className='title'>Sleep</span>
+        <div className='skill-bar'>
+          <span className='skill-per sleep'>
+            <span className='tooltip'>80%</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Report;
