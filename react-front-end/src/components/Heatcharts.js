@@ -30,49 +30,49 @@ class Heatchart extends Component {
 					name: '',
 					data: generateData(90, {
 						min: 0,
-						max: 90,
+						max: 100,
 					}),
 				},
 				{
 					name: '',
 					data: generateData(90, {
 						min: 0,
-						max: 90,
+						max: 100,
 					}),
 				},
 				{
 					name: '',
 					data: generateData(90, {
 						min: 0,
-						max: 90,
+						max: 100,
 					}),
 				},
 				{
 					name: '',
 					data: generateData(90, {
 						min: 0,
-						max: 90,
+						max: 100,
 					}),
 				},
 				{
 					name: '',
 					data: generateData(90, {
 						min: 0,
-						max: 90,
+						max: 100,
 					}),
 				},
 				{
 					name: '',
 					data: generateData(90, {
 						min: 0,
-						max: 90,
+						max: 100,
 					}),
 				},
 				{
 					name: '',
 					data: generateData(90, {
 						min: 0,
-						max: 90,
+						max: 100,
 					}),
 				},
 			],
@@ -107,7 +107,7 @@ class Heatchart extends Component {
 					options={this.state.options}
 					series={this.state.series}
 					type='heatmap'
-					height={115}
+					height={200}
 				/>
 			</div>
 		);
