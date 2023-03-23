@@ -4,19 +4,10 @@ import breathe_image from '../assets/breathe.jpg';
 import habit_image from '../assets/habit.jpg';
 import Landing from './Landing';
 import Slider from './Slider';
-import Navbar from './Navbar';
-
-const navbarLinks = [
-	{ url: '#', title: 'Home' },
-	{ url: '#', title: 'About' },
-	{ url: '/login', title: 'Login' },
-	{ url: '#', title: 'Contact Us' },
-];
 
 const Home = () => {
 	return (
 		<div className='home'>
-			<Navbar navbarLinks={navbarLinks} />
 			<Landing imageSrc={landing_image} />
 			<Slider
 				imageSrc={habit_image}
