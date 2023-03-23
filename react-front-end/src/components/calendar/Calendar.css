@@ -1,5 +1,6 @@
 .calendar {
 	padding: 100px;
+	margin-top: -90px;
 }
 .react-calendar {
 	width: 100%;
@@ -33,6 +34,7 @@
 .react-calendar button {
 	margin: 0;
 	border: 0;
+
 	outline: none;
 	color: black;
 }

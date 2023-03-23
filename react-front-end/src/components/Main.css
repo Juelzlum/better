@@ -1,4 +1,21 @@
 .title {
-	display: flex;
+	display: relative;
 	justify-content: center;
+	font-family: 'Lato', sans-serif;
+	margin-top: 100px;
+	margin-left: 150px;
+}
+.radialBar {
+	position: relative;
+	display: inline-block;
+	justify-content: center;
+	margin-top: 20px;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+.heatchart {
+	position: relative;
+	margin-top: -60px;
+	margin-left: 100px;
+	margin-right: 100px;
 }
