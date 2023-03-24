@@ -10,16 +10,16 @@ const About = () => {
 					<h1>Who are we?</h1>
 				</div>
 				<div className='textblock'>
-					<p>
+					<h3>
 						We are a team of passionate individuals dedicated to providing
 						quality products/services to our customers.
-					</p>
-					<p>
+					</h3>
+					<h3>
 						Our mission is to make a positive impact on the world and we do this
 						by constantly innovating and striving for excellence in everything
 						we do.
-					</p>
-					<p>We look forward to assisting you in living a Better Life!</p>
+					</h3>
+					<h3>We look forward to assisting you in living a Better Life!</h3>
 				</div>
 			</div>
 		</div>

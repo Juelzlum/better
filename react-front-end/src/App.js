@@ -6,12 +6,9 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Main from './components/Main';
 import Navbar from './components/Navbar';
-<<<<<<< HEAD
 import Report from './components/report-totals/Report';
-=======
 import HabitTracker from './components/HabitTracker';
 import About from './components/About';
->>>>>>> master
 
 class App extends Component {
 	constructor(props) {
