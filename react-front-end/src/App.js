@@ -15,6 +15,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			message: 'Better',
+			userID: null,
 		};
 	}
 
@@ -32,10 +33,21 @@ class App extends Component {
 			});
 	};
 
+	componentDidMount() {
+		axios
+			.get('/api/user')
+			.then((response) => {
+				const userID = response.data.userId;
+				this.setState({ userID });
+			})
+			.catch((error) => console.error(error));
+	}
+
 	render() {
+		const { userID } = this.state;
 		return (
 			<div className='App'>
-				<Navbar />
+				<Navbar userID={userID} />
 				<Router>
 					<Routes>
 						<Route path='/' element={<Home />} />

@@ -1,26 +1,31 @@
 require('dotenv').config();
-const Express = require('express');
-const App = Express();
-const BodyParser = require('body-parser');
-const PORT = 8080;
-const db = require('./db/connection.js');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
+const cors = require('cors');
 const routes = require('./routes');
 const apiRoutes = require('./api');
-const cors = require('cors');
 
-// Express Configuration
-App.use(BodyParser.urlencoded({ extended: false }));
-App.use(BodyParser.json());
-App.use(Express.static('public'));
-//middleware
-App.use(cors());
-App.use('/api', apiRoutes);
-//routes are in routes.js
-App.use(routes);
+const app = express();
+const PORT = 8080;
 
-App.listen(PORT, () => {
-	// eslint-disable-next-line no-console
-	console.log(
-		`Express seems to be listening on port ${PORT} so that's pretty good 👍`
-	);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(
+	cookieSession({
+		name: 'session',
+		keys: ['banana'],
+		maxAge: 24 * 60 * 60 * 1000, // Cookie expires after 24 hours
+		sameSite: 'strict',
+		httpOnly: true,
+	})
+);
+
+app.use(cors());
+app.use('/api', apiRoutes);
+app.use(routes);
+
+app.listen(PORT, () => {
+	console.log(`Express server is listening on port ${PORT}`);
 });

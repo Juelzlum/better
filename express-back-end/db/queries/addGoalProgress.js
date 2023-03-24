@@ -1,8 +1,4 @@
-const addGoalProgressQuery = `
-  INSERT INTO goal_progress (goal_id, drank_water, did_sleep, is_stressed, is_tired)
-  VALUES ($1, $2, $3, $4, $5);
-`;
+const addGoalProgress = `INSERT INTO goals (user_id, start_date, end_date, drank_water_goal, is_stressed_goal, did_sleep_goal, is_tired_goal)
+VALUES ([user_id], '[start_date]', '[end_date]', [drank_water_goal], [is_stressed_goal], [did_sleep_goal], [is_tired_goal]);`;
 
-module.exports = {
-	addGoalProgressQuery,
-};
+module.exports = { addGoalProgress };
