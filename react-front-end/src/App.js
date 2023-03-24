@@ -6,7 +6,12 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Main from './components/Main';
 import Navbar from './components/Navbar';
+<<<<<<< HEAD
 import Report from './components/report-totals/Report';
+=======
+import HabitTracker from './components/HabitTracker';
+import About from './components/About';
+>>>>>>> master
 
 class App extends Component {
 	constructor(props) {
@@ -38,8 +43,10 @@ class App extends Component {
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/login' element={<Login />} />
+						<Route path='/about' element={<About />} />
 						<Route path='/main' element={<Main />} />
 						<Route path='/report' element={<Report />} />
+						<Route path='/habittracker' element={<HabitTracker />}></Route>
 					</Routes>
 				</Router>
 			</div>

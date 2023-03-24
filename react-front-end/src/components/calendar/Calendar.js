@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Calendar from 'react-calendar';
-import './Calendar.css'
+import './Calendar.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const ReactCalendar = () => {
-  const [date, setDate] = useState(new Date());
+	const navigate = useNavigate();
 
-  const onChange = date => {
-    setDate(date);
-  };
+	const handleNavigate = (selectedDate) => {
+		navigate('/habittracker');
+	};
 
-  return (
-  <div className='calendar'>
-    <Calendar
-      onChange={onChange}
-      value={date}
-    />
-  </div>
-  );
+	return (
+		<div className='calendar'>
+			<Calendar onChange={(selectedDate) => handleNavigate(selectedDate)} />
+			<form></form>
+		</div>
+	);
 };
-
 
 export default ReactCalendar;

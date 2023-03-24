@@ -3,9 +3,11 @@ import './Navbar.css';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 const navbarLinks = [
-	{ url: '#', title: 'Home' },
-	{ url: '#', title: 'About' },
+	{ url: '/', title: 'Home' },
+	{ url: '/about', title: 'About' },
+	{ url: '/main', title: 'Dashboard' },
 	{ url: '/login', title: 'Login' },
+
 	{ url: '#', title: 'Contact Us' },
 ];
 
@@ -17,7 +19,9 @@ const Navbar = () => {
 	};
 	return (
 		<nav className='navbar'>
-			<span className='navbar__logo'>Better</span>
+			<a href='/'>
+				<span className='navbar__logo'>Better</span>
+			</a>
 			{menuClicked ? (
 				<FiX size={25} className={'navbar__menu'} onClick={toggleMenuClick} />
 			) : (

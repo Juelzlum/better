@@ -1,0 +1,11 @@
+
+INSERT INTO stats(days_id, enough_water, enough_sleep, stress, tired) VALUES (1, TRUE, FALSE, FALSE, TRUE),
+(2, FALSE, TRUE, FALSE, TRUE),
+(3, TRUE, FALSE, FALSE, TRUE),
+(4, FALSE, FALSE, TRUE, FALSE),
+(5, FALSE, FALSE, FALSE, TRUE),
+(6, TRUE, TRUE, FALSE, TRUE),
+(7, TRUE, TRUE, FALSE, FALSE);
+
+
+
