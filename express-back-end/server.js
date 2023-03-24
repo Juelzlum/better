@@ -3,23 +3,20 @@ const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
 const PORT = 8080;
-const connection = require('./db/connection.js');
+const db = require('./db/connection.js');
+const routes = require('./routes');
+const apiRoutes = require('./api');
+const cors = require('cors');
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
-
-const login = require('./routes/login');
-
-App.use('/login', login);
-
-
-App.get('/api/data', (req, res) => {
-	connection.query('SELECT * FROM stats').then((data) => {
-		res.json(data.rows);
-	});
-});
+//middleware
+App.use(cors());
+App.use('/api', apiRoutes);
+//routes are in routes.js
+App.use(routes);
 
 App.listen(PORT, () => {
 	// eslint-disable-next-line no-console

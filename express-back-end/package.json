@@ -10,7 +10,9 @@
 		"db:reset": "node bin/resetdb.js"
 	},
 	"dependencies": {
+		"bcrypt": "^5.1.0",
 		"body-parser": "^1.18.3",
+		"cors": "^2.8.5",
 		"dotenv": "^16.0.3",
 		"express": "^4.16.4",
 		"nodemon": "^1.18.7",

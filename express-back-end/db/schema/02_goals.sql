@@ -8,5 +8,5 @@ CREATE TABLE goals (
   drank_water_goal BOOLEAN,
   is_stressed_goal BOOLEAN,
   did_sleep_goal BOOLEAN,
-  is_tired_goal BOOLEAN,
+  is_tired_goal BOOLEAN
 );

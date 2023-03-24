@@ -19,20 +19,62 @@ function Login() {
 
 	const navigate = useNavigate();
 
-	const handleLogin = (event) => {
+	const handleSignup = async (event) => {
 		event.preventDefault();
-		const testEmail = 'test@example.com';
-		const testPassword = 'password123';
+		// Add form data for sending a request to the backend
+		const formData = new FormData(event.target);
+		const data = Object.fromEntries(formData);
 
-		if (email === testEmail && password === testPassword) {
-			navigate('/dashboard');
-		} else {
-			alert('Invalid email or password');
+		try {
+			const response = await fetch('http://localhost:8080/api/auth/signup', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			});
+
+			if (response.ok) {
+				const responseData = await response.json();
+				console.log(responseData);
+				navigate('/dashboard');
+			} else {
+				const error = await response.json();
+				alert(error.message);
+			}
+		} catch (err) {
+			console.error(err);
+			alert('Error signing up. Please try again.');
 		}
 	};
 
-	//Toggles state of login form. This is called when you click on
-	//the signup or sign in button
+	const handleLogin = async (event) => {
+		event.preventDefault();
+		const formData = new FormData(event.target);
+		const data = Object.fromEntries(formData);
+
+		try {
+			const response = await fetch('http://localhost:8080/api/auth/login', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			});
+
+			if (response.ok) {
+				const responseData = await response.json();
+				console.log(responseData);
+				navigate('/dashboard');
+			} else {
+				const error = await response.json();
+				alert(error.message);
+			}
+		} catch (err) {
+			console.error(err);
+			alert('Error logging in. Please try again.');
+		}
+	};
 	return (
 		<fragment>
 			<div class='login'>
@@ -40,7 +82,7 @@ function Login() {
 					class={`container ${showSignup ? 'right-panel-active' : ''}`}
 					id='container'>
 					<div class='form-container sign-up-container'>
-						<form class='create' action='#'>
+						<form class='create' onSubmit={handleSignup}>
 							<h1>Create Account</h1>
 							<div class='social-container'>
 								<div>
@@ -63,7 +105,7 @@ function Login() {
 								<label></label>
 							</div>
 							<div class='infield'>
-								<input type='password' placeholder='Password' />
+								<input type='password' placeholder='Password' name='password' />
 								<label></label>
 							</div>
 							<button>Sign Up</button>
