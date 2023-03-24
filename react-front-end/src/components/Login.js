@@ -48,9 +48,7 @@ function Login() {
 
 	const handleLogin = async (event) => {
 		event.preventDefault();
-
 		const data = { email, password };
-
 		try {
 			const response = await fetch('http://localhost:8080/api/auth/login', {
 				method: 'POST',
@@ -63,7 +61,7 @@ function Login() {
 			if (response.ok) {
 				const responseData = await response.json();
 				console.log(responseData);
-				document.cookie = `userId=${responseData.userId}; path=/`;
+				document.cookie = `email=${responseData.email}; path=/`;
 				navigate('/dashboard');
 			} else {
 				const error = await response.json();

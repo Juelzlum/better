@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/user', (req, res) => {
+router.get('/', (req, res) => {
 	if (req.session.userId) {
 		res.json({ userId: req.session.userId });
 	} else {
