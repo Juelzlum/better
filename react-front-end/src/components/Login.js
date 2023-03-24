@@ -15,8 +15,6 @@ function Login() {
 	const [password, setPassword] = useState('');
 	const [showSignup, setShowSignup] = useState(false);
 
-	// Handle a login event. We don't care about password or e - mail
-
 	const navigate = useNavigate();
 
 	const handleSignup = async (event) => {
@@ -96,10 +94,7 @@ function Login() {
 								</div>
 							</div>
 							<span>or use your email for registration</span>
-							<div class='infield'>
-								<input type='text' placeholder='Name' />
-								<label></label>
-							</div>
+							<div class='infield'></div>
 							<div class='infield'>
 								<input type='email' placeholder='Email' name='email' />
 								<label></label>
@@ -140,6 +135,7 @@ function Login() {
 								<input
 									type='password'
 									placeholder='Password'
+									name='password'
 									value={password}
 									onChange={(event) => setPassword(event.target.value)}
 								/>
