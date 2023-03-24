@@ -5,6 +5,7 @@ const BodyParser = require('body-parser');
 const PORT = 8080;
 const connection = require('./db/connection.js');
 const cors = require('cors')
+const statsQueries = require('./db/queries/addStats');
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -43,11 +44,12 @@ App.put('/api/data', (req,res) => {
    stress,
    tired
   }
-  return connection.query(`INSERT INTO stats(days_id, enough_water, enough_sleep, stress, tired) VALUES ($1, $2, $3, $4, $5) returning *;`, [days_id,enough_water, enough_sleep, stress, tired ])
-  .then(data => {
-    console.log("queries", data.rows)
-    return data.rows
-  }) 
+
+  statsQueries.addStats(newTrack)
+  .then(newStats => {
+    res.json(newStats)
+  })
+
 })
 
 App.listen(PORT, () => {

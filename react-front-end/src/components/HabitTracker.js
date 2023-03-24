@@ -7,35 +7,17 @@ const HabitTracker = () => {
   const [track, setTrack] = useState([])
 
   const habitTrack = () => {
+    const axiosInstance = axios.create({
+      baseURL: 'http://localhost:8080',
+    }); 
     
-      return axios
+      return axiosInstance
         .put('/api/data', { track })
         .then((response) => {
           setTrack(response.data)
         })
   };
 
-
-  // function bookInterview(id, interview) {
-  //   const appointment = {
-  //     ...state.appointments[id],
-  //     interview: { ...interview }
-  //   };
-  //   const appointments = {
-  //     ...state.appointments,
-  //     [id]: appointment
-  //   };
-
-  //   return axios
-  //   .put(`/api/appointments/${id}`,  { interview })
-  //   .then(() => {
-  //     setState({
-  //       ...state,
-  //       appointments,
-  //       days: numOfSpots(state, appointments, id)
-  //     });
-  //   })
-  // }
 
   return (
     <div className="HabitTracker">
