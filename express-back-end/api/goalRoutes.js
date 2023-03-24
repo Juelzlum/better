@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../db/connection');
 const { getGoalByUser } = require('../db/queries/getGoalByUser');
 
-router.get('/:user_id', async (req, res) => {
+router.get('/:user_id/goals', async (req, res) => {
 	try {
 		const { user_id } = req.params;
 

@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS goals CASCADE;
 
 CREATE TABLE goals (
-  goal_id INT PRIMARY KEY,
+  goal_id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
   start_date DATE,
   end_date DATE,
