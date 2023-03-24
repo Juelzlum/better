@@ -1,0 +1,26 @@
+.about {
+	position: relative;
+	text-align: center;
+	color: white;
+	height: 100vw;
+}
+.aboutText {
+	font-family: 'PT Sans', sans-serif;
+}
+
+.headingTitle {
+	position: absolute;
+	top: 20%;
+	left: 65%;
+	transform: translate(-50%, -50%);
+	font-size: xx-large;
+}
+
+.textblock {
+	position: absolute;
+	top: 35%;
+	left: 65%;
+	transform: translate(-50%, -50%);
+	font-size: xx-large;
+	text-align: center;
+}
