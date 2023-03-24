@@ -5,7 +5,7 @@ import { FiMenu, FiX } from 'react-icons/fi';
 const navbarLinks = [
 	{ url: '/', title: 'Home' },
 	{ url: '/about', title: 'About' },
-	{ url: '/main', title: 'Dashboard' },
+	{ url: '/dashboard', title: 'Dashboard' },
 	{ url: '/login', title: 'Login' },
 
 	{ url: '#', title: 'Contact Us' },

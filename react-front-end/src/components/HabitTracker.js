@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './HabitTracker.css';
+import { useNavigate } from 'react-router-dom';
 
 const HabitTracker = () => {
+	const navigate = useNavigate();
 	const [water, setWater] = useState(null);
 	const [sleep, setSleep] = useState(null);
 	const [stress, setStress] = useState(null);
 	const [tired, setTired] = useState(null);
+	const [showNotice, setShowNotice] = useState(false);
 
 	const handleWater = (value) => {
 		setWater(value);
@@ -21,6 +24,14 @@ const HabitTracker = () => {
 
 	const handleTired = (value) => {
 		setTired(value);
+	};
+
+	const handleSubmit = () => {
+		setShowNotice(true);
+
+		setTimeout(() => {
+			navigate('/dashboard');
+		}, 500);
 	};
 
 	return (
@@ -93,7 +104,13 @@ const HabitTracker = () => {
 					No
 				</button>
 			</div>
-			<button className='habit-tracker__submit-button' type='submit'>
+			{showNotice && (
+				<div className='habit-tracker__notice'>Form submitted!</div>
+			)}
+			<button
+				className='habit-tracker__submit-button'
+				type='submit'
+				onClick={handleSubmit}>
 				Submit
 			</button>
 		</div>

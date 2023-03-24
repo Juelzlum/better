@@ -58,3 +58,7 @@
 	background-color: #fff;
 	color: #444;
 }
+
+.habit-tracker__notice {
+	font-family: 'Lato', san serif;
+}

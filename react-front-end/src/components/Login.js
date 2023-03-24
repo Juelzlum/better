@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FiFacebook, FiGithub, FiChrome } from 'react-icons/fi';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Renders the login form. You can use this form to create a social account or to log in to a third party.
@@ -16,11 +17,20 @@ function Login() {
 
 	// Handle a login event. We don't care about password or e - mail
 
+	const navigate = useNavigate();
+
 	const handleLogin = (event) => {
 		event.preventDefault();
-		setEmail(event.target.value);
-		setPassword(event.target.value);
+		const testEmail = 'test@example.com';
+		const testPassword = 'password123';
+
+		if (email === testEmail && password === testPassword) {
+			navigate('/dashboard');
+		} else {
+			alert('Invalid email or password');
+		}
 	};
+
 	//Toggles state of login form. This is called when you click on
 	//the signup or sign in button
 	return (
@@ -75,11 +85,22 @@ function Login() {
 							</div>
 							<span>or use your account</span>
 							<div class='infield'>
-								<input type='email' placeholder='username' name='email' />
+								<input
+									type='email'
+									placeholder='username'
+									name='email'
+									value={email}
+									onChange={(event) => setEmail(event.target.value)}
+								/>
 								<label></label>
 							</div>
 							<div class='infield'>
-								<input type='password' placeholder='Password' />
+								<input
+									type='password'
+									placeholder='Password'
+									value={password}
+									onChange={(event) => setPassword(event.target.value)}
+								/>
 								<label></label>
 							</div>
 							<a href='/login' class='forgot'>
