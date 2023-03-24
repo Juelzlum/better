@@ -5,7 +5,7 @@ const router = express.Router();
 const db = require('../db/connection');
 const { route } = require('./login');
 
-router.post('/habitTracker', (req, res) => {
+router.put('/', (req, res) => {
  const id = 1
  const enoughWater = false
  const enoughSleep = false
@@ -19,7 +19,7 @@ router.post('/habitTracker', (req, res) => {
   stress,
   tired
  }
- 
+
  res.status(201).send(newTrack);
 }) 
 
