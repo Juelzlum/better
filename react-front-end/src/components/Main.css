@@ -2,7 +2,7 @@
 	display: relative;
 	justify-content: center;
 	font-family: 'Lato', sans-serif;
-	margin-top: 150px;
+	margin-top: 90px;
 	color: #071330;
 
 	margin-left: 150px;
@@ -11,13 +11,12 @@
 	position: relative;
 	display: inline-block;
 	justify-content: center;
-	margin-top: 50px;
-	margin-left: 225px;
-	margin-right: 80px;
+
+	margin-left: 165px;
 }
 .heatchart {
 	position: relative;
 	margin-top: -80px;
-	margin-left: 115px;
+	margin-left: 90px;
 	margin-right: 100px;
 }
