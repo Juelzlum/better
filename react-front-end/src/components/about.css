@@ -23,4 +23,5 @@
 	transform: translate(-50%, -50%);
 	font-size: xx-large;
 	text-align: center;
+	z-index: 1;
 }

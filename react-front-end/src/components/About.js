@@ -19,10 +19,7 @@ const About = () => {
 						by constantly innovating and striving for excellence in everything
 						we do.
 					</p>
-					<p>
-						Thank you for choosing us as your provider and we look forward to
-						serving you.
-					</p>
+					<p>We look forward to assisting you in living a Better Life!</p>
 				</div>
 			</div>
 		</div>
