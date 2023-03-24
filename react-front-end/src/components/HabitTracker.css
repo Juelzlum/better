@@ -44,8 +44,8 @@
 }
 
 .habit-tracker__submit-button {
-	background-color: #444;
-	color: #fff;
+	background-color: #071330;
+	color: #c3ceda;
 	border: none;
 	font-size: 1.2rem;
 	padding: 0.5rem 1rem;
@@ -61,4 +61,5 @@
 
 .habit-tracker__notice {
 	font-family: 'Lato', san serif;
+	color: #444;
 }

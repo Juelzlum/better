@@ -107,7 +107,7 @@ class Heatchart extends Component {
 					options={this.state.options}
 					series={this.state.series}
 					type='heatmap'
-					height={180}
+					height={164}
 				/>
 			</div>
 		);
