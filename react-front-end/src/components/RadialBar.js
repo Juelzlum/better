@@ -1,43 +1,49 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
+import axios from 'axios';
 import './Heatcharts.css';
 
-class RadialBar extends Component {
-	constructor(props) {
-		super(props);
+const RadialBar = ({ userID }) => {
+	const [totalPercentage, setTotalPercentage] = useState(0);
 
-		this.state = {
-			series: [60],
-			options: {
-				colors: ['#6F8FAF', '#141e30'],
-				chart: {
-					height: 350,
-					type: 'radialBar',
-				},
-				plotOptions: {
-					radialBar: {
-						hollow: {
-							size: '70%',
-						},
-					},
-				},
-				labels: ['Total Goals'],
-			},
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				// Fetch the total percentage of goal progress for the user
+				const response = await axios.get(`/api/goals/${userID}`);
+				const totalPercentage = response.data.totalPercentage;
+				setTotalPercentage(totalPercentage);
+			} catch (error) {
+				console.error(error);
+			}
 		};
-	}
 
-	render() {
-		return (
-			<div className='radialBar'>
-				<Chart
-					options={this.state.options}
-					series={this.state.series}
-					type='radialBar'
-					height={350}
-				/>
-			</div>
-		);
-	}
-}
+		fetchData();
+	}, [userID]);
+
+	const options = {
+		colors: ['#6F8FAF', '#141e30'],
+		chart: {
+			height: 350,
+			type: 'radialBar',
+		},
+		plotOptions: {
+			radialBar: {
+				hollow: {
+					size: '70%',
+				},
+			},
+		},
+		labels: ['Total Goals'],
+	};
+
+	const series = [totalPercentage];
+
+	return (
+		<div className='radialBar'>
+			<Chart options={options} series={series} type='radialBar' height={350} />
+		</div>
+	);
+};
 
 export default RadialBar;
