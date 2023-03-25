@@ -10,7 +10,10 @@ const getUserByEmailQuery = `
   WHERE email = $1;
 `;
 
+const getUserByIdQuery = 'SELECT * FROM users WHERE user_id = $1';
+
 module.exports = {
 	createUserQuery,
 	getUserByEmailQuery,
+	getUserByIdQuery,
 };

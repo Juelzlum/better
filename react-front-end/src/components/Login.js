@@ -24,12 +24,13 @@ function Login() {
 		const data = Object.fromEntries(formData);
 
 		try {
-			const response = await fetch('http://localhost:8080/api/auth/signup', {
+			const response = await fetch('http://localhost:8080/api/auth/login', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(data),
+				credentials: 'include',
 			});
 
 			if (response.ok) {
@@ -56,12 +57,13 @@ function Login() {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(data),
+				credentials: 'include',
 			});
 
 			if (response.ok) {
 				const responseData = await response.json();
 				console.log(responseData);
-				document.cookie = `email=${responseData.email}; path=/`;
+
 				navigate('/dashboard');
 			} else {
 				const error = await response.json();

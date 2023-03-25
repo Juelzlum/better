@@ -7,7 +7,7 @@ const {
 	getGoalProgressByUser,
 } = require('../db/queries/goalQueries');
 
-router.get('/:userId/goals', async (req, res) => {
+router.get('/:userId', async (req, res) => {
 	try {
 		const { userId } = req.params;
 

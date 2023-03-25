@@ -22,7 +22,12 @@ app.use(
 	})
 );
 
-app.use(cors());
+app.use(
+	cors({
+		origin: 'http://localhost:3000', // Replace this with your client's origin
+		credentials: true,
+	})
+);
 app.use('/api', apiRoutes);
 app.use(routes);
 

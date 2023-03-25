@@ -10,7 +10,7 @@ const RadialBar = ({ userID }) => {
 		const fetchData = async () => {
 			try {
 				// Fetch the total percentage of goal progress for the user
-				const response = await axios.get(`/api/goals/${userID}/progress`);
+				const response = await axios.get(`/api/goals/${userID}`);
 				const totalPercentage = response.data.totalPercentage;
 				setTotalPercentage(totalPercentage);
 			} catch (error) {
