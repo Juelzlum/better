@@ -14,7 +14,6 @@ App.use(Express.static('public'));
 
 const login = require('./routes/login');
 const habitTracker = require('./routes/habitTracker');
-const db = require('./db/connection.js');
 
 
 App.use('/login', login);
