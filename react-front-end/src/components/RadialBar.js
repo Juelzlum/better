@@ -1,20 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import Chart from 'react-apexcharts';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import './Heatcharts.css';
+import Chart from 'react-apexcharts';
+import UserContext from './userContext';
 
-const RadialBar = ({ userID }) => {
+const RadialBar = () => {
+	const { userID } = useContext(UserContext);
 	const [totalPercentage, setTotalPercentage] = useState(0);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			try {
-				// Fetch the total percentage of goal progress for the user
-				const response = await axios.get(`/api/goals/${userID}`);
-				const totalPercentage = response.data.totalPercentage;
-				setTotalPercentage(totalPercentage);
-			} catch (error) {
-				console.error(error);
+			if (userID) {
+				try {
+					const response = await axios.get(
+						`http://localhost:8080/api/goals/${userID}/progress`
+					);
+					setTotalPercentage(response.data.totalPercentage);
+				} catch (error) {
+					console.error(error);
+				}
 			}
 		};
 
@@ -22,11 +25,6 @@ const RadialBar = ({ userID }) => {
 	}, [userID]);
 
 	const options = {
-		colors: ['#6F8FAF', '#141e30'],
-		chart: {
-			height: 350,
-			type: 'radialBar',
-		},
 		plotOptions: {
 			radialBar: {
 				hollow: {
@@ -34,14 +32,14 @@ const RadialBar = ({ userID }) => {
 				},
 			},
 		},
-		labels: ['Total Goals'],
+		labels: ['Progress'],
 	};
 
 	const series = [totalPercentage];
 
 	return (
-		<div className='radialBar'>
-			<Chart options={options} series={series} type='radialBar' height={350} />
+		<div>
+			<Chart options={options} series={series} type='radialBar' height='350' />
 		</div>
 	);
 };

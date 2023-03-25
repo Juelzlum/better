@@ -7,7 +7,11 @@ const {
 	getGoalProgressByUser,
 } = require('../db/queries/goalQueries');
 
-router.get('/:userId', async (req, res) => {
+// Add an authentication middleware
+const authenticate = require('../middleware/authenticate');
+
+// Update the route to include the :userId parameter and the authenticate middleware
+router.get('/:userId/progress', authenticate, async (req, res) => {
 	try {
 		const { userId } = req.params;
 
