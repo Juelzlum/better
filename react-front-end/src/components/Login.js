@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FiFacebook, FiGithub, FiChrome } from 'react-icons/fi';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-
-/**
- * Renders the login form. You can use this form to create a social account or to log in to a third party.
- *
- *
- * @return { JSX. Element } The login form as a JSX Element. If the user is already logged in this will return undefined
- */
+import UserContext from './userContext';
 
 function Login() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [showSignup, setShowSignup] = useState(false);
-
+	const { setUserID, setToken } = useContext(UserContext);
 	const navigate = useNavigate();
 
 	const handleSignup = async (event) => {
 		event.preventDefault();
-		// Add form data for sending a request to the backend
 		const formData = new FormData(event.target);
 		const data = Object.fromEntries(formData);
 
@@ -36,6 +29,8 @@ function Login() {
 			if (response.ok) {
 				const responseData = await response.json();
 				console.log(responseData);
+				setUserID(responseData.userId);
+				setToken(responseData.token);
 				navigate('/dashboard');
 			} else {
 				const error = await response.json();
@@ -50,6 +45,7 @@ function Login() {
 	const handleLogin = async (event) => {
 		event.preventDefault();
 		const data = { email, password };
+
 		try {
 			const response = await fetch('http://localhost:8080/api/auth/login', {
 				method: 'POST',
@@ -63,7 +59,8 @@ function Login() {
 			if (response.ok) {
 				const responseData = await response.json();
 				console.log(responseData);
-
+				setUserID(responseData.userId);
+				setToken(responseData.token);
 				navigate('/dashboard');
 			} else {
 				const error = await response.json();
@@ -74,6 +71,7 @@ function Login() {
 			alert('Error logging in. Please try again.');
 		}
 	};
+
 	return (
 		<fragment>
 			<div class='login'>
@@ -113,9 +111,6 @@ function Login() {
 							<div class='social-container'>
 								<div>
 									<FiFacebook size={25} />
-								</div>
-								<div>
-									<FiGithub size={25} />
 								</div>
 								<div>
 									<FiChrome size={25} />

@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import './Navbar.css';
 import { FiMenu, FiX } from 'react-icons/fi';
 import axios from 'axios';
 import UserContext from './userContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 	const [menuClicked, setMenuClicked] = useState(false);
-	const { userID, setUserID } = useContext(UserContext);
+	const { userID, setUserID, token, setToken } = useContext(UserContext);
+	const navigate = useNavigate();
 
 	const toggleMenuClick = () => {
 		setMenuClicked(!menuClicked);
@@ -16,6 +18,8 @@ const Navbar = () => {
 		try {
 			await axios.post('/api/auth/logout');
 			setUserID(null);
+			setToken(null); // Clear the token
+			navigate('/'); // Redirect to the home page after successful logout
 		} catch (error) {
 			console.error(error);
 		}
@@ -38,9 +42,9 @@ const Navbar = () => {
 
 	return (
 		<nav className='navbar'>
-			<a href='/'>
+			<Link to='/'>
 				<span className='navbar__logo'>Better</span>
-			</a>
+			</Link>
 			{menuClicked ? (
 				<FiX size={25} className={'navbar__menu'} onClick={toggleMenuClick} />
 			) : (
@@ -56,9 +60,9 @@ const Navbar = () => {
 				}>
 				{navbarLinks.map((item, index) => (
 					<li className='navbar__item' key={index}>
-						<a className='navbar__link' href={item.url} onClick={item.onClick}>
+						<Link className='navbar__link' to={item.url} onClick={item.onClick}>
 							{item.title}
-						</a>
+						</Link>
 					</li>
 				))}
 			</ul>

@@ -4,7 +4,7 @@ import Chart from 'react-apexcharts';
 import UserContext from './userContext';
 
 const RadialBar = () => {
-	const { userID } = useContext(UserContext);
+	const { userID, token } = useContext(UserContext);
 	const [totalPercentage, setTotalPercentage] = useState(0);
 
 	useEffect(() => {
@@ -12,7 +12,12 @@ const RadialBar = () => {
 			if (userID) {
 				try {
 					const response = await axios.get(
-						`http://localhost:8080/api/goals/${userID}/progress`
+						`http://localhost:8080/api/goals/${userID}/progress/total`,
+						{
+							headers: {
+								Authorization: token, // Pass the token in the Authorization header
+							},
+						}
 					);
 					setTotalPercentage(response.data.totalPercentage);
 				} catch (error) {
@@ -22,7 +27,7 @@ const RadialBar = () => {
 		};
 
 		fetchData();
-	}, [userID]);
+	}, [userID, token]);
 
 	const options = {
 		plotOptions: {
@@ -32,7 +37,7 @@ const RadialBar = () => {
 				},
 			},
 		},
-		labels: ['Progress'],
+		labels: ['Total Progress'],
 	};
 
 	const series = [totalPercentage];

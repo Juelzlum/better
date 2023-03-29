@@ -17,6 +17,7 @@ class App extends Component {
 		this.state = {
 			message: 'Better',
 			userID: null,
+			token: null, // Add the token state here
 		};
 	}
 
@@ -31,13 +32,18 @@ class App extends Component {
 	}
 
 	render() {
-		const { userID } = this.state;
+		const { userID, token } = this.state;
 		return (
 			<UserContext.Provider
-				value={{ userID, setUserID: (id) => this.setState({ userID: id }) }}>
+				value={{
+					userID,
+					setUserID: (id) => this.setState({ userID: id }),
+					token, // Pass the token value to the context
+					setToken: (token) => this.setState({ token }), // Pass the token setter to the context
+				}}>
 				<div className='App'>
-					<Navbar />
 					<Router>
+						<Navbar />
 						<Routes>
 							<Route path='/' element={<Home />} />
 							<Route path='/login' element={<Login />} />
