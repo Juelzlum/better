@@ -31,34 +31,39 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-	const { email, password } = req.body;
-
 	try {
+		const { email, password } = req.body;
+
+		// Check if email and password are valid
 		const user = await db.query(getUserByEmailQuery, [email]);
 
 		if (user.rows.length === 0) {
-			return res.status(400).json({ message: 'Invalid email or password.' });
+			return res.status(401).json({ message: 'Invalid email or password' });
 		}
 
-		const passwordMatch = await bcrypt.compare(password, user.rows[0].password);
+		const isPasswordValid = await bcrypt.compare(
+			password,
+			user.rows[0].password
+		);
 
-		if (passwordMatch) {
-			// Store the user ID in the session
-			req.session.userId = user.rows[0].user_id;
-
-			res.status(200).json({ message: 'Logged in successfully.' });
-		} else {
-			res.status(400).json({ message: 'Invalid email or password.' });
+		if (!isPasswordValid) {
+			return res.status(401).json({ message: 'Invalid email or password' });
 		}
-	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal server error.' });
+
+		// Set the user ID in the session
+		req.session.userId = user.rows[0].user_id;
+
+		res.json({ userId: user.rows[0].user_id });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: 'Internal server error' });
 	}
 });
 
 router.post('/logout', async (req, res) => {
 	req.session = null;
 	res.status(200).json({ message: 'Logged out successfully.' });
+	res.redirect('/');
 });
 
 module.exports = router;

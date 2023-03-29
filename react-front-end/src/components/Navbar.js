@@ -1,41 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Navbar.css';
 import { FiMenu, FiX } from 'react-icons/fi';
 import axios from 'axios';
+import UserContext from './userContext';
 
 const Navbar = () => {
 	const [menuClicked, setMenuClicked] = useState(false);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const { userID, setUserID } = useContext(UserContext);
 
 	const toggleMenuClick = () => {
 		setMenuClicked(!menuClicked);
 	};
 
-	const fetchData = async () => {
+	const handleLogout = async () => {
 		try {
-			const response = await axios.get('/api/user');
-			const userID = response.data.userId;
-
-			if (userID) {
-				setIsLoggedIn(true);
-			} else {
-				setIsLoggedIn(false);
-			}
+			await axios.post('/api/auth/logout');
+			setUserID(null);
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
-	useEffect(() => {
-		fetchData();
-	}, []);
-
-	const navbarLinks = isLoggedIn
+	const navbarLinks = userID
 		? [
 				{ url: '/', title: 'Home' },
 				{ url: '/about', title: 'About' },
 				{ url: '/dashboard', title: 'Dashboard' },
-				{ url: '/logout', title: 'Logout' },
+				{ url: '#', title: 'Logout', onClick: handleLogout },
 				{ url: '#', title: 'Contact Us' },
 		  ]
 		: [
@@ -65,7 +56,7 @@ const Navbar = () => {
 				}>
 				{navbarLinks.map((item, index) => (
 					<li className='navbar__item' key={index}>
-						<a className='navbar__link' href={item.url}>
+						<a className='navbar__link' href={item.url} onClick={item.onClick}>
 							{item.title}
 						</a>
 					</li>
