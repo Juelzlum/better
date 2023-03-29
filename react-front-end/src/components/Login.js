@@ -113,6 +113,9 @@ function Login() {
 									<FiFacebook size={25} />
 								</div>
 								<div>
+									<FiGithub size={25} />
+								</div>
+								<div>
 									<FiChrome size={25} />
 								</div>
 							</div>

@@ -86,4 +86,41 @@ router.get('/:userId/progress/monthly', authenticate, async (req, res) => {
 	}
 });
 
+// Add a goal
+router.post('/:userId/add-goal', authenticate, async (req, res) => {
+	try {
+		const {
+			start_date,
+			end_date,
+			drank_water_goal,
+			did_sleep_goal,
+			is_stressed_goal,
+			is_tired_goal,
+		} = req.body;
+
+		// Get the user ID from req.params
+		const userId = req.params.userId;
+
+		// Delete the user's previous goal
+		await db.query('DELETE FROM goals WHERE user_id = $1', [userId]);
+
+		// Add the new goal
+		const result = await db.query(
+			'INSERT INTO goals (user_id, start_date, end_date, drank_water_goal, did_sleep_goal, is_stressed_goal, is_tired_goal) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+			[
+				userId,
+				start_date,
+				end_date,
+				drank_water_goal,
+				did_sleep_goal,
+				is_stressed_goal,
+				is_tired_goal,
+			]
+		);
+
+		res.status(201).json(result.rows[0]);
+	} catch (error) {
+		res.status(500).json({ error: error.message });
+	}
+});
 module.exports = router;

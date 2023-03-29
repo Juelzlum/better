@@ -4,7 +4,7 @@ const db = require('./db/connection');
 const { addGoalProgress } = require('./db/queries/addGoalProgress');
 const { getGoalByUser } = require('./db/queries/userQueries');
 
-router.post('/api/add-progress', async (req, res) => {
+router.post('add-progress', async (req, res) => {
 	try {
 		const { goal_id, drank_water, did_sleep, is_stressed, is_tired } = req.body;
 

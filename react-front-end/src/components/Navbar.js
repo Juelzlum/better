@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 	const [menuClicked, setMenuClicked] = useState(false);
-	const { userID, setUserID, token, setToken } = useContext(UserContext);
+	const { userID, setUserID, setToken } = useContext(UserContext);
 	const navigate = useNavigate();
 
 	const toggleMenuClick = () => {

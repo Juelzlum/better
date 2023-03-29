@@ -23,7 +23,7 @@ const Main = () => {
 						</a>
 					</span>
 					<span>
-						<a href='/'>
+						<a href='/set-goals'>
 							<button>Set Goals</button>
 						</a>
 					</span>
