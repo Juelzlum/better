@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Report from './components/report-totals/Report';
 import HabitTracker from './components/HabitTracker';
 import About from './components/About';
+import Goals from './components/Goals';
 import UserContext from './components/userContext';
 
 class App extends Component {
@@ -51,7 +52,8 @@ class App extends Component {
 							<Route path='/dashboard' element={<Main />} />
 							<Route path='/report' element={<Report />} />
 							<Route path='/habittracker' element={<HabitTracker />}></Route>
-						</Routes>
+	            <Route path='/goals' element = {<Goals/>}></Route>
+					</Routes>
 					</Router>
 				</div>
 			</UserContext.Provider>
