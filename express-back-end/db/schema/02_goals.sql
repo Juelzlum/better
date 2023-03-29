@@ -6,7 +6,7 @@ CREATE TABLE goals (
   start_date DATE,
   end_date DATE,
   drank_water_goal BOOLEAN,
-  is_stressed_goal BOOLEAN,
+  did_exercise_goal BOOLEAN,
   did_sleep_goal BOOLEAN,
-  is_tired_goal BOOLEAN
+  did_eat_goal BOOLEAN
 );

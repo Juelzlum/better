@@ -8,21 +8,23 @@
 	font-family: 'PT Sans', sans-serif;
 }
 
-.headingTitle {
-	color: white;
+.headingTitle h1 {
+	color: black;
 	position: absolute;
-	top: 20%;
-	left: 65%;
+	top: 8%;
+	left: 63.5%;
 	transform: translate(-50%, -50%);
 	font-size: xx-large;
+	opacity: 0.85;
 }
 
 .textblock {
 	position: absolute;
-	top: 35%;
-	left: 65%;
+	top: 39%;
+	left: 63.75%;
 	transform: translate(-50%, -50%);
-
+	color: black;
+	opacity: 0.75;
 	text-align: center;
 	z-index: 1;
 }

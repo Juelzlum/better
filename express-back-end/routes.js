@@ -6,14 +6,14 @@ const { getGoalByUser } = require('./db/queries/userQueries');
 
 router.post('add-progress', async (req, res) => {
 	try {
-		const { goal_id, drank_water, did_sleep, is_stressed, is_tired } = req.body;
+		const { goal_id, drank_water, did_sleep, did_exercise, did_eat } = req.body;
 
 		await db.query(addGoalProgress, [
 			goal_id,
 			drank_water,
 			did_sleep,
-			is_stressed,
-			is_tired,
+			did_exercise,
+			did_eat,
 		]);
 
 		res.status(200).json({ message: 'Progress added ' });

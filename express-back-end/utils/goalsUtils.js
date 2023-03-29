@@ -5,16 +5,16 @@ function calculateFilteredPercentage(goals, progress, filter) {
 	goals.forEach((goal) => {
 		const {
 			drank_water_goal,
-			is_stressed_goal,
+			did_exercise_goal,
 			did_sleep_goal,
-			is_tired_goal,
+			did_eat_goal,
 		} = goal;
 
 		let completed = 0;
 		let possible = 0;
 
 		progress.forEach((p) => {
-			const { drank_water, is_stressed, did_sleep, is_tired, progress_date } =
+			const { drank_water, did_exercise, did_sleep, did_eat, progress_date } =
 				p;
 
 			if (filter(progress_date)) {
@@ -25,9 +25,9 @@ function calculateFilteredPercentage(goals, progress, filter) {
 					}
 				}
 
-				if (is_stressed_goal) {
+				if (did_exercise_goal) {
 					possible++;
-					if (is_stressed) {
+					if (did_exercise) {
 						completed++;
 					}
 				}
@@ -39,9 +39,9 @@ function calculateFilteredPercentage(goals, progress, filter) {
 					}
 				}
 
-				if (is_tired_goal) {
+				if (did_eat_goal) {
 					possible++;
-					if (is_tired) {
+					if (did_eat) {
 						completed++;
 					}
 				}

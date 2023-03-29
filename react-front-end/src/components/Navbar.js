@@ -16,10 +16,12 @@ const Navbar = () => {
 
 	const handleLogout = async () => {
 		try {
-			await axios.post('/api/auth/logout');
-			setUserID(null);
-			setToken(null); // Clear the token
-			navigate('/'); // Redirect to the home page after successful logout
+			const response = await axios.post('/api/auth/logout');
+			if (response.status === 200) {
+				setUserID(null);
+				setToken(null); // Clear the token
+				navigate('/'); // Redirect to the home page after successful logout
+			}
 		} catch (error) {
 			console.error(error);
 		}

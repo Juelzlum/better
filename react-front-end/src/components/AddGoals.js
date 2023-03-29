@@ -8,8 +8,8 @@ const AddGoals = () => {
 	const { userID, token } = useContext(UserContext);
 	const [water, setWater] = useState(false);
 	const [sleep, setSleep] = useState(false);
-	const [stress, setStress] = useState(false);
-	const [tired, setTired] = useState(false);
+	const [exercise, setExercise] = useState(false);
+	const [eat, setEat] = useState(false);
 	const [goalEndDate, setGoalEndDate] = useState(30);
 
 	const handleWater = (value) => {
@@ -20,12 +20,12 @@ const AddGoals = () => {
 		setSleep(value);
 	};
 
-	const handleStress = (value) => {
-		setStress(value);
+	const handleExercise = (value) => {
+		setExercise(value);
 	};
 
-	const handleTired = (value) => {
-		setTired(value);
+	const handleEat = (value) => {
+		setEat(value);
 	};
 
 	const handleGoalEndDate = (value) => {
@@ -38,8 +38,8 @@ const AddGoals = () => {
 		endDate,
 		water,
 		sleep,
-		stress,
-		tired
+		exercise,
+		eat
 	) => {
 		const response = await fetch(`/api/goals/${userId}/add-goal`, {
 			method: 'POST',
@@ -53,8 +53,8 @@ const AddGoals = () => {
 				end_date: endDate.toISOString(),
 				drank_water_goal: water,
 				did_sleep_goal: sleep,
-				is_stressed_goal: stress,
-				is_tired_goal: tired,
+				is_exerciseed_goal: exercise,
+				is_eat_goal: eat,
 			}),
 		});
 
@@ -70,12 +70,12 @@ const AddGoals = () => {
 		const endDate = new Date();
 		endDate.setDate(startDate.getDate() + goalEndDate);
 
-		await addGoal(userID, startDate, endDate, water, sleep, stress, tired);
+		await addGoal(userID, startDate, endDate, water, sleep, exercise, eat);
 		navigate('/dashboard');
 	};
 	return (
 		<div className='habit-tracker'>
-			<h2>Choose your goal end date:</h2>
+			<h2>Choose Your Goal End Date:</h2>
 			<div className='habit-tracker__toggle'>
 				<button
 					className={`habit-tracker__toggle__button ${
@@ -133,37 +133,37 @@ const AddGoals = () => {
 					No
 				</button>
 			</div>
-			<h2>Track Stress?</h2>
+			<h2>Track Exercise?</h2>
 			<div className='habit-tracker__toggle'>
 				<button
 					className={`habit-tracker__toggle__button ${
-						stress === true && 'selected'
+						exercise === true && 'selected'
 					}`}
-					onClick={() => handleStress(true)}>
+					onClick={() => handleExercise(true)}>
 					Yes
 				</button>
 				<button
 					className={`habit-tracker__toggle__button ${
-						stress === false && 'selected'
+						exercise === false && 'selected'
 					}`}
-					onClick={() => handleStress(false)}>
+					onClick={() => handleExercise(false)}>
 					No
 				</button>
 			</div>
-			<h2>Track Tiredness?</h2>
+			<h2>Track Eating Habits?</h2>
 			<div className='habit-tracker__toggle'>
 				<button
 					className={`habit-tracker__toggle__button ${
-						tired === true && 'selected'
+						eat === true && 'selected'
 					}`}
-					onClick={() => handleTired(true)}>
+					onClick={() => handleEat(true)}>
 					Yes
 				</button>
 				<button
 					className={`habit-tracker__toggle__button ${
-						tired === false && 'selected'
+						eat === false && 'selected'
 					}`}
-					onClick={() => handleTired(false)}>
+					onClick={() => handleEat(false)}>
 					No
 				</button>
 			</div>

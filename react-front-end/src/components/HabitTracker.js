@@ -6,8 +6,8 @@ const HabitTracker = () => {
 	const navigate = useNavigate();
 	const [water, setWater] = useState(null);
 	const [sleep, setSleep] = useState(null);
-	const [stress, setStress] = useState(null);
-	const [tired, setTired] = useState(null);
+	const [exercise, setExercise] = useState(null);
+	const [eat, setEat] = useState(null);
 	const [showNotice, setShowNotice] = useState(false);
 
 	const handleWater = (value) => {
@@ -18,12 +18,12 @@ const HabitTracker = () => {
 		setSleep(value);
 	};
 
-	const handleStress = (value) => {
-		setStress(value);
+	const handleExercise = (value) => {
+		setExercise(value);
 	};
 
-	const handleTired = (value) => {
-		setTired(value);
+	const handleEat = (value) => {
+		setEat(value);
 	};
 
 	const handleSubmit = () => {
@@ -70,37 +70,37 @@ const HabitTracker = () => {
 					No
 				</button>
 			</div>
-			<h2>Are you stressed?</h2>
+			<h2>Did you exercise?</h2>
 			<div className='habit-tracker__toggle'>
 				<button
 					className={`habit-tracker__toggle__button ${
-						stress === true && 'selected'
+						exercise === true && 'selected'
 					}`}
-					onClick={() => handleStress(true)}>
+					onClick={() => handleExercise(true)}>
 					Yes
 				</button>
 				<button
 					className={`habit-tracker__toggle__button ${
-						stress === false && 'selected'
+						exercise === false && 'selected'
 					}`}
-					onClick={() => handleStress(false)}>
+					onClick={() => handleExercise(false)}>
 					No
 				</button>
 			</div>
-			<h2>Are you tired right now?</h2>
+			<h2>Did you eat the right amount?</h2>
 			<div className='habit-tracker__toggle'>
 				<button
 					className={`habit-tracker__toggle__button ${
-						tired === true && 'selected'
+						eat === true && 'selected'
 					}`}
-					onClick={() => handleTired(true)}>
+					onClick={() => handleEat(true)}>
 					Yes
 				</button>
 				<button
 					className={`habit-tracker__toggle__button ${
-						tired === false && 'selected'
+						eat === false && 'selected'
 					}`}
-					onClick={() => handleTired(false)}>
+					onClick={() => handleEat(false)}>
 					No
 				</button>
 			</div>

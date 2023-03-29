@@ -1,4 +1,4 @@
-INSERT INTO goals (user_id, start_date, end_date, drank_water_goal, is_stressed_goal, did_sleep_goal, is_tired_goal) VALUES
+INSERT INTO goals (user_id, start_date, end_date, drank_water_goal, did_exercise_goal, did_sleep_goal, did_eat_goal) VALUES
   (1, '2023-01-01', '2023-03-31', true, true, true, true),
   (2, '2023-01-01', '2023-03-31', false, true, true, false),
   (3, '2023-01-01', '2023-03-31', true, true, false, true),

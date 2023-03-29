@@ -4,7 +4,7 @@ const getGoalsByUser = `
 `;
 
 const getGoalProgressByUser = `
-  SELECT * FROM goal_progress
+  SELECT * FROM goals_progress
   WHERE goal_id IN (
     SELECT goal_id FROM goals
     WHERE user_id = $1
@@ -12,7 +12,7 @@ const getGoalProgressByUser = `
 `;
 
 const getGoalWeeklyProgressByUser = `
-  SELECT * FROM goal_progress
+  SELECT * FROM goals_progress
   WHERE goal_id IN (
     SELECT goal_id FROM goals
     WHERE user_id = $1
@@ -20,11 +20,19 @@ const getGoalWeeklyProgressByUser = `
 `;
 
 const getGoalMonthlyProgressByUser = `
-  SELECT * FROM goal_progress
+  SELECT * FROM goals_progress
   WHERE goal_id IN (
     SELECT goal_id FROM goals
     WHERE user_id = $1
   ) AND progress_date >= CURRENT_DATE - INTERVAL '1 month';
+`;
+
+const getGoalDailyProgressByUser = `
+  SELECT * FROM goals_progress
+  WHERE goal_id IN (
+    SELECT goal_id FROM goals
+    WHERE user_id = $1
+  ) AND progress_date = CURRENT_DATE;
 `;
 
 module.exports = {
@@ -32,4 +40,5 @@ module.exports = {
 	getGoalProgressByUser,
 	getGoalWeeklyProgressByUser,
 	getGoalMonthlyProgressByUser,
+	getGoalDailyProgressByUser,
 };
