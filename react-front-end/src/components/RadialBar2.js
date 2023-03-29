@@ -3,7 +3,7 @@ import axios from 'axios';
 import Chart from 'react-apexcharts';
 import UserContext from './userContext';
 
-const RadialBar = () => {
+const RadialBar2 = () => {
 	const { userID, token } = useContext(UserContext);
 	const [totalPercentage, setTotalPercentage] = useState(0);
 
@@ -49,4 +49,4 @@ const RadialBar = () => {
 	);
 };
 
-export default RadialBar;
+export default RadialBar2;

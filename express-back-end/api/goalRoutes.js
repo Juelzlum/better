@@ -5,8 +5,8 @@ const { calculateTotalPercentage } = require('../utils/goalsUtils');
 const {
 	getGoalsByUser,
 	getGoalProgressByUser,
-	getWeeklyGoalProgressByUser,
-	getMonthlyGoalProgressByUser,
+	getGoalWeeklyProgressByUser,
+	getGoalMonthlyProgressByUser,
 } = require('../db/queries/goalQueries');
 
 // Add an authentication middleware

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Chart from 'react-apexcharts';
 import UserContext from './userContext';
 
-const RadialBar = () => {
+const RadialBar3 = () => {
 	const { userID, token } = useContext(UserContext);
 	const [totalPercentage, setTotalPercentage] = useState(0);
 
@@ -12,7 +12,7 @@ const RadialBar = () => {
 			if (userID) {
 				try {
 					const response = await axios.get(
-						`http://localhost:8080/api/goals/${userID}/progress`,
+						`http://localhost:8080/api/goals/${userID}/progress/monthly`,
 						{
 							headers: {
 								Authorization: token, // Pass the token in the Authorization header
@@ -49,4 +49,4 @@ const RadialBar = () => {
 	);
 };
 
-export default RadialBar;
+export default RadialBar3;
