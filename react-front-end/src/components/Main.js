@@ -16,9 +16,18 @@ const Main = () => {
 			<ReactCalendar />
 			<div className='heatchart'>
 				<Heatcharts />
-			<ul>
-				<a href="/report">Weekly Progress</a>
-			</ul>
+				<div className='dashboardButtons'>
+					<span>
+						<a href='/report'>
+							<button>Progress Breakdown</button>
+						</a>
+					</span>
+					<span>
+						<a href='/'>
+							<button>Set Goals</button>
+						</a>
+					</span>
+				</div>
 			</div>
 			<div className='radialBar'>
 				<RadialBar userID={userID} />

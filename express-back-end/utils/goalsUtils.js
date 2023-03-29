@@ -1,4 +1,4 @@
-function calculateTotalPercentage(goals, progress) {
+function calculateFilteredPercentage(goals, progress, filter) {
 	let totalCompleted = 0;
 	let totalPossible = 0;
 
@@ -14,33 +14,36 @@ function calculateTotalPercentage(goals, progress) {
 		let possible = 0;
 
 		progress.forEach((p) => {
-			const { drank_water, is_stressed, did_sleep, is_tired } = p;
+			const { drank_water, is_stressed, did_sleep, is_tired, progress_date } =
+				p;
 
-			if (drank_water_goal) {
-				possible++;
-				if (drank_water) {
-					completed++;
+			if (filter(progress_date)) {
+				if (drank_water_goal) {
+					possible++;
+					if (drank_water) {
+						completed++;
+					}
 				}
-			}
 
-			if (is_stressed_goal) {
-				possible++;
-				if (is_stressed) {
-					completed++;
+				if (is_stressed_goal) {
+					possible++;
+					if (is_stressed) {
+						completed++;
+					}
 				}
-			}
 
-			if (did_sleep_goal) {
-				possible++;
-				if (did_sleep) {
-					completed++;
+				if (did_sleep_goal) {
+					possible++;
+					if (did_sleep) {
+						completed++;
+					}
 				}
-			}
 
-			if (is_tired_goal) {
-				possible++;
-				if (is_tired) {
-					completed++;
+				if (is_tired_goal) {
+					possible++;
+					if (is_tired) {
+						completed++;
+					}
 				}
 			}
 		});
@@ -54,9 +57,9 @@ function calculateTotalPercentage(goals, progress) {
 	const totalPercentage =
 		totalPossible === 0 ? 0 : (totalCompleted / totalPossible) * 100;
 
-	return totalPercentage;
+	return Math.round(totalPercentage);
 }
 
 module.exports = {
-	calculateTotalPercentage,
+	calculateFilteredPercentage,
 };

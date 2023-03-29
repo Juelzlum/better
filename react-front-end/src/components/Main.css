@@ -4,19 +4,28 @@
 	font-family: 'Lato', sans-serif;
 	margin-top: 90px;
 	color: #071330;
-
 	margin-left: 150px;
-}
-.radialBar {
-	position: relative;
-	display: inline-block;
-	justify-content: center;
-
-	margin-left: 170px;
 }
 .heatchart {
 	position: relative;
 	margin-top: -80px;
-	margin-left: 95px;
+	margin-left: 90px;
 	margin-right: 100px;
+}
+.dashboardButtons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-left: 200px;
+}
+.dashboardButtons button {
+	cursor: pointer;
+}
+span + span {
+	margin-left: 82%;
+}
+.radialBar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }

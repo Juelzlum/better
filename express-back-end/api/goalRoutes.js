@@ -1,16 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/connection');
-const { calculateTotalPercentage } = require('../utils/goalsUtils');
+const { calculateFilteredPercentage } = require('../utils/goalsUtils');
 const {
 	getGoalsByUser,
 	getGoalProgressByUser,
-	getGoalWeeklyProgressByUser,
-	getGoalMonthlyProgressByUser,
 } = require('../db/queries/goalQueries');
 
 // Add an authentication middleware
 const authenticate = require('../middleware/authenticate');
+
+// Filters
+const totalFilter = () => true;
+const weeklyFilter = (date) => {
+	const oneWeekAgo = new Date();
+	oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+	return date >= oneWeekAgo;
+};
+const monthlyFilter = (date) => {
+	const oneMonthAgo = new Date();
+	oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+	return date >= oneMonthAgo;
+};
 
 // Update the route to include the :userId parameter and the authenticate middleware
 router.get('/:userId/progress/total', authenticate, async (req, res) => {
@@ -20,7 +31,11 @@ router.get('/:userId/progress/total', authenticate, async (req, res) => {
 		const goals = await db.query(getGoalsByUser, [userId]);
 		const progress = await db.query(getGoalProgressByUser, [userId]);
 
-		const totalPercentage = calculateTotalPercentage(goals.rows, progress.rows);
+		const totalPercentage = calculateFilteredPercentage(
+			goals.rows,
+			progress.rows,
+			totalFilter
+		);
 
 		res.status(200).json({ totalPercentage });
 	} catch (err) {
@@ -35,9 +50,13 @@ router.get('/:userId/progress/weekly', authenticate, async (req, res) => {
 		const { userId } = req.params;
 
 		const goals = await db.query(getGoalsByUser, [userId]);
-		const progress = await db.query(getWeeklyGoalProgressByUser, [userId]);
+		const progress = await db.query(getGoalProgressByUser, [userId]);
 
-		const totalPercentage = calculateTotalPercentage(goals.rows, progress.rows);
+		const totalPercentage = calculateFilteredPercentage(
+			goals.rows,
+			progress.rows,
+			weeklyFilter
+		);
 
 		res.status(200).json({ totalPercentage });
 	} catch (err) {
@@ -52,9 +71,13 @@ router.get('/:userId/progress/monthly', authenticate, async (req, res) => {
 		const { userId } = req.params;
 
 		const goals = await db.query(getGoalsByUser, [userId]);
-		const progress = await db.query(getMonthlyGoalProgressByUser, [userId]);
+		const progress = await db.query(getGoalProgressByUser, [userId]);
 
-		const totalPercentage = calculateTotalPercentage(goals.rows, progress.rows);
+		const totalPercentage = calculateFilteredPercentage(
+			goals.rows,
+			progress.rows,
+			monthlyFilter
+		);
 
 		res.status(200).json({ totalPercentage });
 	} catch (err) {
